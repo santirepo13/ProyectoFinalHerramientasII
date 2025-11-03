@@ -24,7 +24,11 @@ namespace CodeQuest
                     command.Parameters.AddWithValue("@username", username);
                     
                     var result = command.ExecuteScalar();
-                    return Convert.ToInt32(result);
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return SafeConverter.ToInt32(result);
+                    }
+                    throw new Exception("No se pudo crear el usuario");
                 }
             }
         }
@@ -37,7 +41,8 @@ namespace CodeQuest
                 using (var command = new SqlCommand("SELECT COUNT(*) FROM Users WHERE Username = @username", connection))
                 {
                     command.Parameters.AddWithValue("@username", username);
-                    int count = (int)command.ExecuteScalar();
+                    var result = command.ExecuteScalar();
+                    int count = SafeConverter.ToInt32(result);
                     return count > 0;
                 }
             }
@@ -52,7 +57,11 @@ namespace CodeQuest
                 {
                     command.Parameters.AddWithValue("@username", username);
                     var result = command.ExecuteScalar();
-                    return result != null ? Convert.ToInt32(result) : 0;
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return SafeConverter.ToInt32(result);
+                    }
+                    return 0;
                 }
             }
         }

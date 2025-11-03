@@ -41,7 +41,11 @@ namespace CodeQuest
                     command.Parameters.AddWithValue("@UserID", userId);
                     
                     var result = command.ExecuteScalar();
-                    return Convert.ToInt32(result);
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return SafeConverter.ToInt32(result);
+                    }
+                    throw new Exception("No se pudo crear la ronda");
                 }
             }
         }
@@ -71,9 +75,9 @@ namespace CodeQuest
                         {
                             questions.Add(new Question
                             {
-                                QuestionID = reader.GetInt32("QuestionID"),
+                                QuestionID = SafeConverter.ToInt32(reader["QuestionID"]),
                                 Text = reader.GetString("Text"),
-                                Difficulty = reader.GetInt32("Difficulty")
+                                Difficulty = SafeConverter.ToInt32(reader["Difficulty"])
                             });
                         }
                     }
@@ -105,7 +109,7 @@ namespace CodeQuest
                     {
                         choices.Add(new Choice
                         {
-                            ChoiceID = reader.GetInt32("ChoiceID"),
+                            ChoiceID = SafeConverter.ToInt32(reader["ChoiceID"]),
                             ChoiceText = reader.GetString("ChoiceText"),
                             IsCorrect = reader.GetBoolean("IsCorrect")
                         });
@@ -129,7 +133,7 @@ namespace CodeQuest
                     command.Parameters.AddWithValue("@ChoiceID", choiceId);
                     command.Parameters.AddWithValue("@TimeSpentSec", timeSpentSec);
                     
-                    command.ExecuteScalar();
+                    command.ExecuteNonQuery();
                 }
             }
         }
@@ -150,10 +154,10 @@ namespace CodeQuest
                         {
                             return new RoundResult
                             {
-                                Score = reader.GetInt32("Score"),
-                                XpEarned = reader.GetInt32("XpEarned"),
-                                Correctas = reader.GetInt32("Correctas"),
-                                TiempoTotalSegundos = reader.GetInt32("TiempoTotalSegundos")
+                                Score = SafeConverter.ToInt32(reader["Score"]),
+                                XpEarned = SafeConverter.ToInt32(reader["XpEarned"]),
+                                Correctas = SafeConverter.ToInt32(reader["Correctas"]),
+                                TiempoTotalSegundos = SafeConverter.ToInt32(reader["TiempoTotalSegundos"])
                             };
                         }
                     }
