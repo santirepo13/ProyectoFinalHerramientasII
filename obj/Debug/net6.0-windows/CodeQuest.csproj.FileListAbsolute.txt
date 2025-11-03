@@ -1,0 +1,5 @@
+C:\Users\BroadSpec\Documents\PascualBravo\ProyectoFinalHerramientasII\obj\Debug\net6.0-windows\CodeQuest.csproj.AssemblyReference.cache
+C:\Users\BroadSpec\Documents\PascualBravo\ProyectoFinalHerramientasII\obj\Debug\net6.0-windows\CodeQuest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BroadSpec\Documents\PascualBravo\ProyectoFinalHerramientasII\obj\Debug\net6.0-windows\CodeQuest.AssemblyInfoInputs.cache
+C:\Users\BroadSpec\Documents\PascualBravo\ProyectoFinalHerramientasII\obj\Debug\net6.0-windows\CodeQuest.AssemblyInfo.cs
+C:\Users\BroadSpec\Documents\PascualBravo\ProyectoFinalHerramientasII\obj\Debug\net6.0-windows\CodeQuest.csproj.CoreCompileInputs.cache
