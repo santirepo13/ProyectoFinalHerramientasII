@@ -35,7 +35,7 @@ namespace CodeQuest
             
             // Form properties
             this.Text = "CodeQuest - Resultados Finales";
-            this.Size = new Size(600, 450);
+            this.Size = new Size(750, 550);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -133,8 +133,8 @@ namespace CodeQuest
 
         private void BtnJugarDeNuevo_Click(object sender, EventArgs e)
         {
-            FormRonda formRonda = new FormRonda(userId, username);
-            formRonda.Show();
+            FormInformativo formInformativo = new FormInformativo(userId, username);
+            formInformativo.Show();
             this.Close();
         }
 

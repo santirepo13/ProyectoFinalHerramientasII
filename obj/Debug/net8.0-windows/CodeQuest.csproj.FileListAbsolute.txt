@@ -57,3 +57,4 @@ C:\Users\BroadSpec\Documents\PascualBravo\ProyectoFinalHerramientasII\bin\Debug\
 C:\Users\BroadSpec\Documents\PascualBravo\ProyectoFinalHerramientasII\bin\Debug\net8.0-windows\runtimes\win-x64\native\WebView2Loader.dll
 C:\Users\BroadSpec\Documents\PascualBravo\ProyectoFinalHerramientasII\bin\Debug\net8.0-windows\runtimes\win-x86\native\WebView2Loader.dll
 C:\Users\BroadSpec\Documents\PascualBravo\ProyectoFinalHerramientasII\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+C:\Users\BroadSpec\Documents\PascualBravo\ProyectoFinalHerramientasII\obj\Debug\net8.0-windows\CodeQuest.sourcelink.json

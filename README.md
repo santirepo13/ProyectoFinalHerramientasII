@@ -21,11 +21,10 @@ CodeQuest es un juego educativo desarrollado en Windows Forms que permite a los 
 
 ### Formularios del Juego
 1. **FormInicio**: Solicita nombre de usuario
-2. **FormRonda**: Muestra información de la ronda antes de comenzar
-3. **FormPreguntas**: Presenta las preguntas con opciones múltiples
-4. **FormResultadoRonda**: Muestra resultados de cada ronda
-5. **FormResultadosFinales**: Estadísticas finales del juego
-6. **FormRanking**: Top 10 mejores jugadores
+2. **FormInformativo**: Información general del juego (solo al inicio)
+3. **FormPreguntas**: Presenta las preguntas con flujo continuo entre rondas
+4. **FormResultadosFinales**: Estadísticas finales del juego
+5. **FormRanking**: Top 10 mejores jugadores con funciones CRUD
 
 ## Configuración de Base de Datos
 
@@ -116,11 +115,10 @@ CodeQuest/
 
 ├── Forms/
 │   ├── FormInicio.cs           # Formulario de inicio
-│   ├── FormRonda.cs            # Formulario de preparación de ronda
-│   ├── FormPreguntas.cs        # Formulario de preguntas
-│   ├── FormResultadoRonda.cs   # Formulario de resultados por ronda
+│   ├── FormInformativo.cs      # Información del juego (solo al inicio)
+│   ├── FormPreguntas.cs        # Formulario de preguntas (flujo continuo)
 │   ├── FormResultadosFinales.cs # Formulario de resultados finales
-│   └── FormRanking.cs          # Formulario de ranking
+│   └── FormRanking.cs          # Formulario de ranking con CRUD
 ├── Program.cs                  # Punto de entrada con pruebas
 └── CodeQuest.csproj           # Archivo de proyecto
 ```

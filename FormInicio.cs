@@ -26,7 +26,7 @@ namespace CodeQuest
             
             // Form properties
             this.Text = "CodeQuest - Juego de Programación";
-            this.Size = new Size(500, 350);
+            this.Size = new Size(700, 450);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -35,10 +35,10 @@ namespace CodeQuest
             // Title label
             lblTitulo = new Label();
             lblTitulo.Text = "¡Bienvenido a CodeQuest!";
-            lblTitulo.Font = new Font("Arial", 18, FontStyle.Bold);
+            lblTitulo.Font = new Font("Arial", 20, FontStyle.Bold);
             lblTitulo.ForeColor = Color.FromArgb(25, 25, 112);
-            lblTitulo.Size = new Size(400, 40);
-            lblTitulo.Location = new Point(50, 30);
+            lblTitulo.Size = new Size(600, 50);
+            lblTitulo.Location = new Point(50, 40);
             lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             this.Controls.Add(lblTitulo);
 
@@ -46,18 +46,18 @@ namespace CodeQuest
             lblInstrucciones = new Label();
             lblInstrucciones.Text = "Ingresa tu nombre de usuario para comenzar el juego.\n" +
                                    "Responderás preguntas de programación en C# y ganarás XP por cada respuesta correcta.";
-            lblInstrucciones.Font = new Font("Arial", 10);
+            lblInstrucciones.Font = new Font("Arial", 12);
             lblInstrucciones.ForeColor = Color.FromArgb(70, 70, 70);
-            lblInstrucciones.Size = new Size(400, 60);
-            lblInstrucciones.Location = new Point(50, 90);
+            lblInstrucciones.Size = new Size(600, 80);
+            lblInstrucciones.Location = new Point(50, 120);
             lblInstrucciones.TextAlign = ContentAlignment.MiddleCenter;
             this.Controls.Add(lblInstrucciones);
 
             // Username textbox
             txtUsername = new TextBox();
-            txtUsername.Font = new Font("Arial", 12);
-            txtUsername.Size = new Size(300, 30);
-            txtUsername.Location = new Point(100, 180);
+            txtUsername.Font = new Font("Arial", 14);
+            txtUsername.Size = new Size(400, 35);
+            txtUsername.Location = new Point(150, 240);
             txtUsername.MaxLength = 50;
             txtUsername.KeyPress += TxtUsername_KeyPress;
             this.Controls.Add(txtUsername);
@@ -65,9 +65,9 @@ namespace CodeQuest
             // Start button
             btnComenzar = new Button();
             btnComenzar.Text = "Comenzar Juego";
-            btnComenzar.Font = new Font("Arial", 12, FontStyle.Bold);
-            btnComenzar.Size = new Size(200, 40);
-            btnComenzar.Location = new Point(150, 230);
+            btnComenzar.Font = new Font("Arial", 14, FontStyle.Bold);
+            btnComenzar.Size = new Size(250, 50);
+            btnComenzar.Location = new Point(225, 300);
             btnComenzar.BackColor = Color.FromArgb(70, 130, 180);
             btnComenzar.ForeColor = Color.White;
             btnComenzar.FlatStyle = FlatStyle.Flat;
@@ -131,9 +131,9 @@ namespace CodeQuest
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                // Open round selection form
-                FormRonda formRonda = new FormRonda(userId, username);
-                formRonda.Show();
+                // Open informative form (only at the beginning)
+                FormInformativo formInformativo = new FormInformativo(userId, username);
+                formInformativo.Show();
                 this.Hide();
             }
             catch (Exception ex)

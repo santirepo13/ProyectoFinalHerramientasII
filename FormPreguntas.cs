@@ -46,7 +46,7 @@ namespace CodeQuest
             
             // Form properties
             this.Text = "CodeQuest - Preguntas";
-            this.Size = new Size(700, 500);
+            this.Size = new Size(900, 650);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -55,9 +55,9 @@ namespace CodeQuest
             // Title label
             lblTitulo = new Label();
             lblTitulo.Text = $"Ronda {roundNumber} - {username}";
-            lblTitulo.Font = new Font("Arial", 16, FontStyle.Bold);
+            lblTitulo.Font = new Font("Arial", 18, FontStyle.Bold);
             lblTitulo.ForeColor = Color.FromArgb(25, 25, 112);
-            lblTitulo.Size = new Size(600, 30);
+            lblTitulo.Size = new Size(800, 40);
             lblTitulo.Location = new Point(50, 20);
             lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             this.Controls.Add(lblTitulo);
@@ -81,10 +81,10 @@ namespace CodeQuest
 
             // Question label
             lblPregunta = new Label();
-            lblPregunta.Font = new Font("Arial", 12, FontStyle.Bold);
+            lblPregunta.Font = new Font("Arial", 14, FontStyle.Bold);
             lblPregunta.ForeColor = Color.FromArgb(25, 25, 112);
-            lblPregunta.Size = new Size(600, 80);
-            lblPregunta.Location = new Point(50, 100);
+            lblPregunta.Size = new Size(800, 100);
+            lblPregunta.Location = new Point(50, 120);
             this.Controls.Add(lblPregunta);
 
             // Radio buttons for choices
@@ -92,10 +92,10 @@ namespace CodeQuest
             for (int i = 0; i < 4; i++)
             {
                 radioButtons[i] = new RadioButton();
-                radioButtons[i].Font = new Font("Arial", 11);
+                radioButtons[i].Font = new Font("Arial", 12);
                 radioButtons[i].ForeColor = Color.FromArgb(70, 70, 70);
-                radioButtons[i].Size = new Size(550, 30);
-                radioButtons[i].Location = new Point(70, 200 + (i * 40));
+                radioButtons[i].Size = new Size(750, 40);
+                radioButtons[i].Location = new Point(70, 250 + (i * 50));
                 radioButtons[i].UseVisualStyleBackColor = true;
                 this.Controls.Add(radioButtons[i]);
             }
@@ -103,9 +103,9 @@ namespace CodeQuest
             // Next button
             btnSiguiente = new Button();
             btnSiguiente.Text = "Siguiente";
-            btnSiguiente.Font = new Font("Arial", 12, FontStyle.Bold);
-            btnSiguiente.Size = new Size(150, 40);
-            btnSiguiente.Location = new Point(275, 400);
+            btnSiguiente.Font = new Font("Arial", 14, FontStyle.Bold);
+            btnSiguiente.Size = new Size(200, 50);
+            btnSiguiente.Location = new Point(350, 500);
             btnSiguiente.BackColor = Color.FromArgb(70, 130, 180);
             btnSiguiente.ForeColor = Color.White;
             btnSiguiente.FlatStyle = FlatStyle.Flat;
@@ -219,9 +219,37 @@ namespace CodeQuest
                 
                 if (result != null)
                 {
-                    FormResultadoRonda formResultado = new FormResultadoRonda(userId, username, roundNumber, result);
-                    formResultado.Show();
-                    this.Hide();
+                    // Mostrar resultado de la ronda brevemente
+                    string bonusText = "";
+                    if (result.TiempoTotalSegundos <= 30)
+                        bonusText = "¡Excelente velocidad! (+20 XP)";
+                    else if (result.TiempoTotalSegundos <= 60)
+                        bonusText = "¡Buena velocidad! (+10 XP)";
+                    else
+                        bonusText = "Puedes mejorar tu velocidad (sin bonificación)";
+
+                    string mensaje = $"🎯 RONDA {roundNumber} COMPLETADA\n\n" +
+                                   $"✅ Respuestas correctas: {result.Correctas} de 3\n" +
+                                   $"⚡ Tiempo total: {result.TiempoTotalSegundos} segundos\n" +
+                                   $"🎁 {bonusText}\n" +
+                                   $"💰 XP ganado: {result.XpEarned} XP";
+
+                    MessageBox.Show(mensaje, $"Ronda {roundNumber} - Resultados", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Decidir qué hacer después
+                    if (roundNumber < 3)
+                    {
+                        // Ir a la siguiente ronda directamente
+                        StartNextRound();
+                    }
+                    else
+                    {
+                        // Ir a resultados finales
+                        FormResultadosFinales formFinales = new FormResultadosFinales(userId, username);
+                        formFinales.Show();
+                        this.Close();
+                    }
                 }
                 else
                 {
@@ -232,6 +260,36 @@ namespace CodeQuest
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al finalizar la ronda: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Inicia la siguiente ronda directamente
+        /// </summary>
+        private void StartNextRound()
+        {
+            try
+            {
+                int nextRound = roundNumber + 1;
+                int nextRoundId = gameService.StartNewRound(userId);
+                var nextQuestions = gameService.GetQuestionsForRound(nextRound);
+                
+                if (nextQuestions.Count == 3)
+                {
+                    FormPreguntas formPreguntas = new FormPreguntas(userId, username, nextRoundId, nextRound, nextQuestions);
+                    formPreguntas.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show($"Error: No se pudieron cargar las preguntas para la ronda {nextRound}.", "Error", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al iniciar la siguiente ronda: {ex.Message}", "Error", 
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -37,7 +37,7 @@ namespace CodeQuest
             
             // Form properties
             this.Text = "CodeQuest - Ranking de Jugadores";
-            this.Size = new Size(900, 600);
+            this.Size = new Size(1000, 650);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -202,8 +202,8 @@ namespace CodeQuest
 
         private void BtnJugarDeNuevo_Click(object sender, EventArgs e)
         {
-            FormRonda formRonda = new FormRonda(userId, username);
-            formRonda.Show();
+            FormInformativo formInformativo = new FormInformativo(userId, username);
+            formInformativo.Show();
             this.Close();
         }
 
