@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Microsoft.Data.SqlClient;
 using CodeQuest.Database;
 using CodeQuest.Models;
-using CodeQuest.Utils;
 
 namespace CodeQuest.Repositories
 {
@@ -46,7 +45,7 @@ namespace CodeQuest.Repositories
                             {
                                 QuestionID = reader.GetInt32(0),
                                 Text = reader.GetString(1),
-                                Difficulty = SafeConverter.ToInt32(reader[2])
+                                Difficulty = Convert.ToInt32(reader[2])
                             });
                         }
                     }
@@ -121,7 +120,7 @@ namespace CodeQuest.Repositories
                                 {
                                     QuestionID = reader.GetInt32(0),
                                     Text = reader.GetString(1),
-                                    Difficulty = SafeConverter.ToInt32(reader[2])
+                                    Difficulty = Convert.ToInt32(reader[2])
                                 };
                                 
                                 // Cerrar el reader antes de obtener las opciones
@@ -170,7 +169,7 @@ namespace CodeQuest.Repositories
                                 {
                                     QuestionID = reader.GetInt32(0),
                                     Text = reader.GetString(1),
-                                    Difficulty = SafeConverter.ToInt32(reader[2])
+                                    Difficulty = Convert.ToInt32(reader[2])
                                 });
                             }
                         }
@@ -213,7 +212,7 @@ namespace CodeQuest.Repositories
                         command.Parameters.AddWithValue("@Difficulty", question.Difficulty);
                         
                         var result = command.ExecuteScalar();
-                        return SafeConverter.ToInt32(result);
+                        return Convert.ToInt32(result);
                     }
                 }
             }
@@ -247,7 +246,7 @@ namespace CodeQuest.Repositories
                         command.Parameters.AddWithValue("@IsCorrect", choice.IsCorrect);
                         
                         var result = command.ExecuteScalar();
-                        return SafeConverter.ToInt32(result);
+                        return Convert.ToInt32(result);
                     }
                 }
             }

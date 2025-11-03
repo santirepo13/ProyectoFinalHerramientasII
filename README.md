@@ -109,13 +109,10 @@ CodeQuest/
 ├── Services/
 │   ├── IGameService.cs         # Interfaz del servicio
 │   └── GameService.cs          # Servicio principal del juego
-├── Validators/
-│   ├── BaseValidator.cs        # Clase base abstracta (Herencia)
-│   └── UsernameValidator.cs    # Validador específico (Polimorfismo)
+
 ├── Factories/
 │   └── ServiceFactory.cs       # Factory de servicios
-├── Utils/
-│   └── SafeConverter.cs        # Conversiones seguras de tipos
+
 
 ├── Forms/
 │   ├── FormInicio.cs           # Formulario de inicio

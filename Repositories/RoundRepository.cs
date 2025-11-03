@@ -4,7 +4,6 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using CodeQuest.Database;
 using CodeQuest.Models;
-using CodeQuest.Utils;
 
 namespace CodeQuest.Repositories
 {
@@ -34,7 +33,7 @@ namespace CodeQuest.Repositories
                     var result = command.ExecuteScalar();
                     if (result != null && result != DBNull.Value)
                     {
-                        return SafeConverter.ToInt32(result);
+                        return Convert.ToInt32(result);
                     }
                     throw new Exception("No se pudo crear la ronda");
                 }
@@ -75,10 +74,10 @@ namespace CodeQuest.Repositories
                         {
                             return new RoundResult
                             {
-                                Score = SafeConverter.ToInt32(reader["Score"]),
-                                XpEarned = SafeConverter.ToInt32(reader["XpEarned"]),
-                                Correctas = SafeConverter.ToInt32(reader["Correctas"]),
-                                TiempoTotalSegundos = SafeConverter.ToInt32(reader["TiempoTotalSegundos"])
+                                Score = Convert.ToInt32(reader["Score"]),
+                                XpEarned = Convert.ToInt32(reader["XpEarned"]),
+                                Correctas = Convert.ToInt32(reader["Correctas"]),
+                                TiempoTotalSegundos = Convert.ToInt32(reader["TiempoTotalSegundos"])
                             };
                         }
                     }
@@ -127,13 +126,13 @@ namespace CodeQuest.Repositories
                             {
                                 return new Round
                                 {
-                                    RoundID = SafeConverter.ToInt32(reader["RoundID"]),
-                                    UserID = SafeConverter.ToInt32(reader["UserID"]),
+                                    RoundID = Convert.ToInt32(reader["RoundID"]),
+                                    UserID = Convert.ToInt32(reader["UserID"]),
                                     StartedAt = reader.GetDateTime("StartedAt"),
                                     CompletedAt = reader.IsDBNull("CompletedAt") ? null : reader.GetDateTime("CompletedAt"),
-                                    Score = SafeConverter.ToInt32(reader["Score"]),
-                                    XpEarned = SafeConverter.ToInt32(reader["XpEarned"]),
-                                    DurationSec = SafeConverter.ToInt32(reader["DurationSec"])
+                                    Score = Convert.ToInt32(reader["Score"]),
+                                    XpEarned = Convert.ToInt32(reader["XpEarned"]),
+                                    DurationSec = Convert.ToInt32(reader["DurationSec"])
                                 };
                             }
                         }
@@ -170,13 +169,13 @@ namespace CodeQuest.Repositories
                             {
                                 rounds.Add(new Round
                                 {
-                                    RoundID = SafeConverter.ToInt32(reader["RoundID"]),
-                                    UserID = SafeConverter.ToInt32(reader["UserID"]),
+                                    RoundID = Convert.ToInt32(reader["RoundID"]),
+                                    UserID = Convert.ToInt32(reader["UserID"]),
                                     StartedAt = reader.GetDateTime("StartedAt"),
                                     CompletedAt = reader.IsDBNull("CompletedAt") ? null : reader.GetDateTime("CompletedAt"),
-                                    Score = SafeConverter.ToInt32(reader["Score"]),
-                                    XpEarned = SafeConverter.ToInt32(reader["XpEarned"]),
-                                    DurationSec = SafeConverter.ToInt32(reader["DurationSec"])
+                                    Score = Convert.ToInt32(reader["Score"]),
+                                    XpEarned = Convert.ToInt32(reader["XpEarned"]),
+                                    DurationSec = Convert.ToInt32(reader["DurationSec"])
                                 });
                             }
                         }

@@ -4,7 +4,6 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using CodeQuest.Database;
 using CodeQuest.Models;
-using CodeQuest.Utils;
 
 namespace CodeQuest.Repositories
 {
@@ -56,7 +55,7 @@ namespace CodeQuest.Repositories
                         var result = command.ExecuteScalar();
                         if (result != null && result != DBNull.Value)
                         {
-                            return SafeConverter.ToInt32(result);
+                            return Convert.ToInt32(result);
                         }
                         throw new InvalidOperationException("No se pudo crear el usuario - resultado nulo de la base de datos");
                     }
@@ -106,7 +105,7 @@ namespace CodeQuest.Repositories
                     {
                         command.Parameters.AddWithValue("@username", username);
                         var result = command.ExecuteScalar();
-                        int count = SafeConverter.ToInt32(result);
+                        int count = Convert.ToInt32(result);
                         return count > 0;
                     }
                 }
@@ -139,7 +138,7 @@ namespace CodeQuest.Repositories
                     var result = command.ExecuteScalar();
                     if (result != null && result != DBNull.Value)
                     {
-                        return SafeConverter.ToInt32(result);
+                        return Convert.ToInt32(result);
                     }
                     return 0;
                 }
@@ -160,10 +159,10 @@ namespace CodeQuest.Repositories
                         {
                             return new User
                             {
-                                UserID = SafeConverter.ToInt32(reader["UserID"]),
+                                UserID = Convert.ToInt32(reader["UserID"]),
                                 Username = reader.GetString("Username"),
-                                Xp = SafeConverter.ToInt32(reader["Xp"]),
-                                Level = SafeConverter.ToInt32(reader["Level"]),
+                                Xp = Convert.ToInt32(reader["Xp"]),
+                                Level = Convert.ToInt32(reader["Level"]),
                                 CreatedAt = reader.GetDateTime("CreatedAt")
                             };
                         }
@@ -414,10 +413,10 @@ namespace CodeQuest.Repositories
                             {
                                 users.Add(new User
                                 {
-                                    UserID = SafeConverter.ToInt32(reader["UserID"]),
+                                    UserID = Convert.ToInt32(reader["UserID"]),
                                     Username = reader.GetString("Username"),
-                                    Xp = SafeConverter.ToInt32(reader["Xp"]),
-                                    Level = SafeConverter.ToInt32(reader["Level"]),
+                                    Xp = Convert.ToInt32(reader["Xp"]),
+                                    Level = Convert.ToInt32(reader["Level"]),
                                     CreatedAt = reader.GetDateTime("CreatedAt")
                                 });
                             }
