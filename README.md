@@ -87,7 +87,7 @@ A. Modo 1
 B. Modo 2
 
 
-<img src="Screenshots/iniciaropcion1.png" width="600"/><br/>
+<img src="Screenshots/iniciaropcion2.png" width="600"/><br/>
    [`Screenshots/iniciaropcion2.png`](Screenshots/iniciaropcion2.png:1)
 
 
