@@ -202,15 +202,15 @@ namespace CodeQuest
 
         private void BtnJugarDeNuevo_Click(object sender, EventArgs e)
         {
-            FormInformativo formInformativo = new FormInformativo(userId, username);
-            formInformativo.Show();
+            FormInformation formInformation = new FormInformation(userId, username);
+            formInformation.Show();
             this.Close();
         }
 
         private void BtnInicio_Click(object sender, EventArgs e)
         {
-            FormInicio formInicio = new FormInicio();
-            formInicio.Show();
+            FormStart formStart = new FormStart();
+            formStart.Show();
             this.Close();
         }
 

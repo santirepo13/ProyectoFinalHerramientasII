@@ -10,7 +10,7 @@ namespace CodeQuest
     /// Formulario informativo general que se muestra solo al inicio del juego
     /// Explica las reglas y mecánicas del juego
     /// </summary>
-    public partial class FormInformativo : Form
+    public partial class FormInformation : Form
     {
         private int userId;
         private string username;
@@ -27,7 +27,7 @@ namespace CodeQuest
         /// </summary>
         /// <param name="userId">ID del usuario</param>
         /// <param name="username">Nombre del usuario</param>
-        public FormInformativo(int userId, string username)
+        public FormInformation(int userId, string username)
         {
             this.userId = userId;
             this.username = username;
@@ -135,8 +135,8 @@ namespace CodeQuest
                 
                 if (questions.Count == 3)
                 {
-                    FormPreguntas formPreguntas = new FormPreguntas(userId, username, roundId, 1, questions);
-                    formPreguntas.Show();
+                    FormQuestions formQuestions = new FormQuestions(userId, username, roundId, 1, questions);
+                    formQuestions.Show();
                     this.Hide();
                 }
                 else
@@ -154,7 +154,7 @@ namespace CodeQuest
 
         private void BtnVolver_Click(object sender, EventArgs e)
         {
-            FormInicio formInicio = new FormInicio();
+            FormStart formInicio = new FormStart();
             formInicio.Show();
             this.Close();
         }

@@ -6,7 +6,7 @@ using CodeQuest.Services;
 
 namespace CodeQuest
 {
-    public partial class FormInicio : Form
+    public partial class FormStart : Form
     {
         private TextBox txtUsername;
         private Button btnComenzar;
@@ -14,7 +14,7 @@ namespace CodeQuest
         private Label lblInstrucciones;
         private readonly IGameService gameService;
 
-        public FormInicio()
+        public FormStart()
         {
             gameService = ServiceFactory.GetGameService();
             InitializeComponent();
@@ -132,8 +132,8 @@ namespace CodeQuest
                 }
 
                 // Open informative form (only at the beginning)
-                FormInformativo formInformativo = new FormInformativo(userId, username);
-                formInformativo.Show();
+                FormInformation formInformation = new FormInformation(userId, username);
+                formInformation.Show();
                 this.Hide();
             }
             catch (Exception ex)

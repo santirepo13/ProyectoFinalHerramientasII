@@ -8,7 +8,7 @@ using CodeQuest.Models;
 
 namespace CodeQuest
 {
-    public partial class FormPreguntas : Form
+    public partial class FormQuestions : Form
     {
         private int userId;
         private string username;
@@ -28,7 +28,7 @@ namespace CodeQuest
         private System.Windows.Forms.Timer timer;
         private int totalSeconds = 0;
 
-        public FormPreguntas(int userId, string username, int roundId, int roundNumber, List<Question> questions)
+        public FormQuestions(int userId, string username, int roundId, int roundNumber, List<Question> questions)
         {
             this.userId = userId;
             this.username = username;
@@ -246,7 +246,7 @@ namespace CodeQuest
                     else
                     {
                         // Ir a resultados finales
-                        FormResultadosFinales formFinales = new FormResultadosFinales(userId, username);
+                        FormFinalResults formFinales = new FormFinalResults(userId, username);
                         formFinales.Show();
                         this.Close();
                     }
@@ -277,8 +277,8 @@ namespace CodeQuest
                 
                 if (nextQuestions.Count == 3)
                 {
-                    FormPreguntas formPreguntas = new FormPreguntas(userId, username, nextRoundId, nextRound, nextQuestions);
-                    formPreguntas.Show();
+                    FormQuestions formQuestions = new FormQuestions(userId, username, nextRoundId, nextRound, nextQuestions);
+                    formQuestions.Show();
                     this.Close();
                 }
                 else

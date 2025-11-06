@@ -8,7 +8,7 @@ using CodeQuest.Services;
 
 namespace CodeQuest
 {
-    public partial class FormResultadosFinales : Form
+    public partial class FormFinalResults : Form
     {
         private int userId;
         private string username;
@@ -20,7 +20,7 @@ namespace CodeQuest
         private Button btnInicio;
         private readonly IGameService gameService;
 
-        public FormResultadosFinales(int userId, string username)
+        public FormFinalResults(int userId, string username)
         {
             this.userId = userId;
             this.username = username;
@@ -133,15 +133,15 @@ namespace CodeQuest
 
         private void BtnJugarDeNuevo_Click(object sender, EventArgs e)
         {
-            FormInformativo formInformativo = new FormInformativo(userId, username);
-            formInformativo.Show();
+            FormInformation formInformation = new FormInformation(userId, username);
+            formInformation.Show();
             this.Close();
         }
 
         private void BtnInicio_Click(object sender, EventArgs e)
         {
-            FormInicio formInicio = new FormInicio();
-            formInicio.Show();
+            FormStart formStart = new FormStart();
+            formStart.Show();
             this.Close();
         }
     }
