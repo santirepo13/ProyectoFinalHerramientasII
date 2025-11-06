@@ -143,6 +143,23 @@ B. Modo 2
    <img src="Screenshots/cargascript.png" width="600"/><br/>
    [`Screenshots/cargascript.png`](Screenshots/cargascript.png:1)
 
+   Normalización de la base de datos — explicación paso a paso
+   Las siguientes imágenes muestran cómo se aplicaron las formas normales al esquema. Cada paso incluye una breve explicación y el enlace al archivo original en la carpeta [`Screenshots`](Screenshots:1).
+
+   1) Primera forma normal (1FN) — separar valores repetidos y multivaluados
+   <img src="Screenshots/1FN1.png" width="600"/><br/>
+   [`Screenshots/1FN1.png`](Screenshots/1FN1.png:1)
+   <img src="Screenshots/1FN2.png" width="600"/><br/>
+   [`Screenshots/1FN2.png`](Screenshots/1FN2.png:1)
+
+   2) Segunda forma normal (2FN) — eliminar dependencias parciales
+   <img src="Screenshots/2FN.png" width="600"/><br/>
+   [`Screenshots/2FN.png`](Screenshots/2FN.png:1)
+
+   3) Tercera forma normal (3FN) — eliminar dependencias transitivas y refinar claves
+   <img src="Screenshots/3FN.png" width="600"/><br/>
+   [`Screenshots/3FN.png`](Screenshots/3FN.png:1)
+
 9. Información y Ranking
    Páginas informativas y listado de ranking de usuarios.
 
@@ -153,7 +170,4 @@ B. Modo 2
 
    <img src="Screenshots/rankingusuario.png" width="600"/><br/>
    [`Screenshots/rankingusuario.png`](Screenshots/rankingusuario.png:1)
-
-(Nota: las imágenes se muestran como miniaturas grandes en el README; haz clic en el enlace de cada paso para abrir el archivo original en la carpeta [`Screenshots`](Screenshots:1).)
-Contribucion
 
