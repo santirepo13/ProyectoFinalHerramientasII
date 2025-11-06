@@ -21,6 +21,7 @@ namespace CodeQuest
         private Button btnRefreshUsers;
         private Button btnLogout;
         private Button btnBackToStart;
+        private Button btnManageAdmins;
         
         private readonly IGameService gameService;
         private readonly IAdministratorService administratorService;
@@ -150,6 +151,18 @@ namespace CodeQuest
             btnBackToStart.FlatStyle = FlatStyle.Flat;
             btnBackToStart.Click += BtnBackToStart_Click;
             this.Controls.Add(btnBackToStart);
+
+            // Administrators management button
+            btnManageAdmins = new Button();
+            btnManageAdmins.Text = "Administradores";
+            btnManageAdmins.Font = new Font("Arial", 12, FontStyle.Bold);
+            btnManageAdmins.Size = new Size(150, 40);
+            btnManageAdmins.Location = new Point(610, 720);
+            btnManageAdmins.BackColor = Color.FromArgb(70, 130, 180);
+            btnManageAdmins.ForeColor = Color.White;
+            btnManageAdmins.FlatStyle = FlatStyle.Flat;
+            btnManageAdmins.Click += BtnManageAdmins_Click;
+            this.Controls.Add(btnManageAdmins);
 
             this.ResumeLayout(false);
         }
@@ -330,9 +343,23 @@ namespace CodeQuest
             }
         }
 
+        private void BtnManageAdmins_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var form = new FormAdminManagement();
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al abrir gestión de administradores: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void BtnLogout_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("¿Estás seguro de que quieres cerrar sesión?", 
+            var result = MessageBox.Show("¿Estás seguro de que quieres cerrar sesión?",
                 "Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)

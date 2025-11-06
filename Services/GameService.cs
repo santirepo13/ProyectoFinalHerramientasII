@@ -76,6 +76,15 @@ namespace CodeQuest.Services
             return userRepository.GetUserById(userId);
         }
 
+        /// <summary>
+        /// Obtiene todos los usuarios (para administración)
+        /// </summary>
+        /// <returns>Lista de usuarios</returns>
+        public List<User> GetAllUsers()
+        {
+            return userRepository.GetAllUsers();
+        }
+
         // Métodos administrativos para el ranking
         /// <summary>
         /// Actualiza el nombre de un usuario

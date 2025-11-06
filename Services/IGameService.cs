@@ -11,6 +11,11 @@ namespace CodeQuest.Services
         bool UserExists(string username);
         int GetUserId(string username);
         User GetUserById(int userId);
+        /// <summary>
+        /// Obtiene todos los usuarios (para administración)
+        /// </summary>
+        /// <returns>Lista de usuarios</returns>
+        List<User> GetAllUsers();
 
         // Game operations
         int StartNewRound(int userId);
