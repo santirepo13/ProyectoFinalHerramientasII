@@ -12,7 +12,7 @@ Tabla de contenido
 - Base de datos
 - Arquitectura y componentes principales
 - Estructura del proyecto
-- Capturas de pantalla
+
 
 Descripcion general
 
@@ -71,27 +71,24 @@ Estructura del proyecto
 - Solucion: [`ProyectoFinalHerramientasII.sln`](ProyectoFinalHerramientasII.sln)
 
 
-Imágenes inline
-Pantalla de inicio de sesión: ![Pantalla de inicio de sesión](Screenshots/login.png) [`Screenshots/login.png`](Screenshots/login.png)
-Gestor de administradores: ![Gestor de administradores](Screenshots/gestoradmin.png) [`Screenshots/gestoradmin.png`](Screenshots/gestoradmin.png)
-Gestión de preguntas: ![Gestión de preguntas](Screenshots/gestorpreguntas.png) [`Screenshots/gestorpreguntas.png`](Screenshots/gestorpreguntas.png)
-Juego en curso: ![Juego en curso](Screenshots/iniciaropcion1.png) [`Screenshots/iniciaropcion1.png`](Screenshots/iniciaropcion1.png)
-Resultados finales: ![Resultados finales](Screenshots/resultados.png) [`Screenshots/resultados.png`](Screenshots/resultados.png)
-Ronda: ![Ronda](Screenshots/ronda.png) [`Screenshots/ronda.png`](Screenshots/ronda.png)
-Esquema de base de datos: ![Esquema DB](Screenshots/scriptDB.png) [`Screenshots/scriptDB.png`](Screenshots/scriptDB.png)
-Carga de script: ![Carga de script](Screenshots/cargascript.png) [`Screenshots/cargascript.png`](Screenshots/cargascript.png)
-Información: ![Información](Screenshots/informacion.png) [`Screenshots/informacion.png`](Screenshots/informacion.png)
-Ranking de usuarios: ![Ranking de usuarios](Screenshots/rankingusuario.png) [`Screenshots/rankingusuario.png`](Screenshots/rankingusuario.png)
-Inicio: ![Inicio](Screenshots/inicio.png) [`Screenshots/inicio.png`](Screenshots/inicio.png)
-Panel Admin: ![Panel Admin](Screenshots/paneladmin.png) [`Screenshots/paneladmin.png`](Screenshots/paneladmin.png)
+Capturas de pantalla (vista resumida)
+
+A continuación las capturas principales presentadas en una cuadrícula para mejorar la legibilidad. Haz clic en el enlace bajo cada imagen para abrir el archivo en la carpeta Screenshots.
+
+| Inicio | Login | Panel Admin |
+| --- | --- | --- |
+| <img src="Screenshots/inicio.png" width="300"/><br/>[`Screenshots/inicio.png`](Screenshots/inicio.png) | <img src="Screenshots/login.png" width="300"/><br/>[`Screenshots/login.png`](Screenshots/login.png) | <img src="Screenshots/paneladmin.png" width="300"/><br/>[`Screenshots/paneladmin.png`](Screenshots/paneladmin.png) |
+
+| Gestor Admin | Gestor Opciones | Gestión de Preguntas |
+| --- | --- | --- |
+| <img src="Screenshots/gestoradmin.png" width="300"/><br/>[`Screenshots/gestoradmin.png`](Screenshots/gestoradmin.png) | <img src="Screenshots/gestoropciones.png" width="300"/><br/>[`Screenshots/gestoropciones.png`](Screenshots/gestoropciones.png) | <img src="Screenshots/gestorpreguntas.png" width="300"/><br/>[`Screenshots/gestorpreguntas.png`](Screenshots/gestorpreguntas.png) |
+
+| Juego (opción 1) | Juego (opción 2) | Ronda / Resultados |
+| --- | --- | --- |
+| <img src="Screenshots/iniciaropcion1.png" width="300"/><br/>[`Screenshots/iniciaropcion1.png`](Screenshots/iniciaropcion1.png) | <img src="Screenshots/iniciaropcion2.png" width="300"/><br/>[`Screenshots/iniciaropcion2.png`](Screenshots/iniciaropcion2.png) | <img src="Screenshots/ronda.png" width="300"/><br/>[`Screenshots/ronda.png`](Screenshots/ronda.png) <br/> <img src="Screenshots/resultados.png" width="300"/><br/>[`Screenshots/resultados.png`](Screenshots/resultados.png) |
+
+| Base de datos | Carga de script | Ranking / Información |
+| --- | --- | --- |
+| <img src="Screenshots/scriptDB.png" width="300"/><br/>[`Screenshots/scriptDB.png`](Screenshots/scriptDB.png) | <img src="Screenshots/cargascript.png" width="300"/><br/>[`Screenshots/cargascript.png`](Screenshots/cargascript.png) | <img src="Screenshots/rankingusuario.png" width="300"/><br/>[`Screenshots/rankingusuario.png`](Screenshots/rankingusuario.png) <br/> <img src="Screenshots/informacion.png" width="300"/><br/>[`Screenshots/informacion.png`](Screenshots/informacion.png) |
 Contribucion
 
-- Contribuciones son bienvenidas. Por favor abra un issue y/o haga un pull request.
-
-Licencia
-
-- MIT
-
-Agradecimientos
-
-- Al equipo de desarrollo.
