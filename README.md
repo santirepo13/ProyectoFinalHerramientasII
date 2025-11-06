@@ -79,12 +79,16 @@ Modos de Inicio del software:
 
 A. Modo 1
 
- <img src="Screenshots/inicio.png" width="600"/><br/>
-   [`Screenshots/inicio.png`](Screenshots/iniciaropcion1.png:1)
 
-B. Modo 2 
-<img src="Screenshots/inicio.png" width="600"/><br/>
-   [`Screenshots/inicio.png`](Screenshots/iniciaropcion3.png:1)
+ <img src="Screenshots/iniciaropcion1.png" width="600"/><br/>
+   [`Screenshots/iniciaropcion1.png`](Screenshots/iniciaropcion1.png:1)
+
+
+B. Modo 2
+
+
+<img src="Screenshots/iniciaropcion1.png" width="600"/><br/>
+   [`Screenshots/iniciaropcion2.png`](Screenshots/iniciaropcion2.png:1)
 
 
 
