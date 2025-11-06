@@ -1,175 +1,97 @@
-# CodeQuest - Juego de Programación en C#
+# CodeQuest
 
-## Descripción
-CodeQuest es un juego educativo desarrollado en Windows Forms que permite a los jugadores responder preguntas de programación en C# y ganar XP por respuestas correctas. El juego incluye un sistema de base de datos para almacenar usuarios, preguntas, respuestas y puntuaciones.
+CodeQuest es una aplicacion de escritorio para Windows, desarrollada en C# y .NET, que permite administrar y jugar un cuestionario enfocado en conocimiento de desarrollo.
+La solucion utiliza patrones de diseno modernos (repositorio, servicios y factory) y una base de datos SQL local.
 
-## Características Principales
+Tabla de contenido
 
-### Sistema de Juego
-- **3 rondas por partida** con dificultad progresiva (1, 2, 3)
-- **3 preguntas por ronda** seleccionadas aleatoriamente según la dificultad
-- **Sistema de XP**: 10 XP por respuesta correcta + bonificación por tiempo
-- **Bonificación por velocidad**:
-  - ≤30 segundos: +20 XP
-  - ≤60 segundos: +10 XP
-  - >60 segundos: +0 XP
+- Descripcion general
+- Tecnologias
+- Requisitos
+- Instalacion y ejecucion
+- Base de datos
+- Arquitectura y componentes principales
+- Estructura del proyecto
+- Capturas de pantalla
 
-### Validaciones Implementadas
-- **Nombre de usuario**: Requerido, longitud mínima 3 caracteres, solo letras, números y guión bajo
-- **Respuestas**: Validación de selección obligatoria antes de continuar
-- **Conexión a base de datos**: Manejo de errores y validaciones
+Descripcion general
 
-### Formularios del Juego
-1. **FormInicio**: Solicita nombre de usuario
-2. **FormInformativo**: Información general del juego (solo al inicio)
-3. **FormPreguntas**: Presenta las preguntas con flujo continuo entre rondas
-4. **FormResultadosFinales**: Estadísticas finales del juego
-5. **FormRanking**: Top 10 mejores jugadores con funciones CRUD
+CodeQuest permite gestionar jugadores, administradores, preguntas y rondas, y tocar la logica.
 
-## Configuración de Base de Datos
+A continuacion se describen los componentes principales y la estructura del proyecto.
 
-### Requisitos
-- SQL Server Express (DESKTOP-FN66L1D\SQLEXPRESS)
-- Base de datos: CodeQuest
+Tecnologias
 
-### Instalación
-1. Ejecutar el script `Database/querysinlosadd.sql` para crear la estructura de la base de datos
-2. Ejecutar el script `Database/AddedQuestions.sql` para insertar las preguntas de ejemplo
+- Lenguaje: C#
+- Plataforma: .NET 8.0 para Windows
+- Interfaz: Windows Forms
+- Almacenamiento: SQL Server LocalDB (archivo CodeQuest.sql)
+- Patrones: Repositorio, Servicios y Factory (DI)
 
-### Estructura de la Base de Datos
-- **Users**: Almacena información de usuarios (ID, nombre, XP, nivel)
-- **Questions**: Preguntas con diferentes niveles de dificultad
-- **Choices**: Opciones de respuesta para cada pregunta
-- **Rounds**: Rondas de juego por usuario
-- **RoundAnswers**: Respuestas específicas de cada ronda
+Requisitos
 
-## Cómo Ejecutar
+- .NET SDK 8.0 o superior (Windows)
+- Windows 10/11
+- SQL Server LocalDB o SQL Server Express
 
-### Prerrequisitos
-- .NET 6.0 o superior
-- Visual Studio 2022 o Visual Studio Code
-- SQL Server Express
+Instalacion y ejecucion
 
-### Pasos
-1. Clonar o descargar el proyecto
-2. Configurar la base de datos ejecutando los scripts SQL
-3. Verificar la cadena de conexión en `DatabaseHelper.cs`
-4. Compilar y ejecutar el proyecto
+- Opcion 1: Abrir la solucion en Visual Studio y sincronizar paquetes, luego ejecutar.
+- Opcion 2: Siguientes comandos:
+  - dotnet restore
+  - dotnet build CodeQuest.sln
+  - dotnet run --project CodeQuest.csproj
 
-```bash
-dotnet build
-dotnet run
-```
+Base de datos
 
-## Flujo del Juego
+- El esquema se encuentra en [`Database/CodeQuest.sql`](Database/CodeQuest.sql)
+- Inicializar la base de datos ejecutando ese archivo en su servidor
+- La cadena de conexion se define en [`Database/DbConnection.cs`](Database/DbConnection.cs)
 
-1. **Inicio**: El jugador ingresa su nombre de usuario
-2. **Preparación**: Se muestra información sobre la ronda actual
-3. **Preguntas**: El jugador responde 3 preguntas con tiempo cronometrado
-4. **Resultados de Ronda**: Se muestran los resultados y XP ganado
-5. **Siguiente Ronda**: Se repite para las 3 rondas (dificultad 1, 2, 3)
-6. **Resultados Finales**: Estadísticas completas de la sesión
-7. **Ranking**: Opción de ver el top 10 de jugadores
+Arquitectura y componentes principales
 
-## Fórmula de XP
+CodeQuest implementa:
 
-```
-XP Total = (Respuestas Correctas × 10) + Bonificación por Tiempo
+- Repositorios para el acceso a datos: [`Repositories/QuestionRepository.cs`](Repositories/QuestionRepository.cs) y [`Repositories/AdministratorRepository.cs`](Repositories/AdministratorRepository.cs)
+- Servicios de negocio: [`Services/GameService.cs`](Services/GameService.cs), [`Services/AdministratorService.cs`](Services/AdministratorService.cs) y [`Services/IGameService.cs`](Services/IGameService.cs)
+- Interfaces de repositorio y servicio: [`Repositories/IQuestionRepository.cs`](Repositories/IQuestionRepository.cs), [`Services/IGameService.cs`](Services/IGameService.cs)
+- Fábrica de servicios (inyeccion de dependencias): [`Factories/ServiceFactory.cs`](Factories/ServiceFactory.cs)
+- Interfaz y logicas de la UI: FormLogin.cs, FormStart.cs, FormQuestionManagement.cs, FormQuestions.cs, FormFinalResults.cs, FormRanking.cs, FormInformation.cs, FormAdminManagement.cs, FormAdminLocker.cs, FormManageOptions.cs
+- Punto de entrada y proyecto: [`Program.cs`](Program.cs) y [`CodeQuest.csproj`](CodeQuest.csproj)
 
-Bonificación por Tiempo:
-- Tiempo ≤ 30 segundos: +20 XP
-- Tiempo ≤ 60 segundos: +10 XP  
-- Tiempo > 60 segundos: +0 XP
-```
+Estructura del proyecto
 
-## Tecnologías Utilizadas
-- **Frontend**: Windows Forms (.NET 8.0)
-- **Backend**: C#
-- **Base de Datos**: SQL Server Express
-- **ORM**: ADO.NET con SqlClient
-- **Patrones de Diseño**: Singleton, Factory, Repository
-
-## Estructura del Proyecto
-```
-CodeQuest/
-├── Database/
-│   ├── querysinlosadd.sql      # Estructura de BD y procedimientos
-│   ├── AddedQuestions.sql      # Preguntas de ejemplo
-│   └── DbConnection.cs         # 🔥 Patrón Singleton para conexiones
-├── Models/
-│   ├── User.cs                 # Modelo de usuario (Encapsulamiento)
-│   ├── Question.cs             # Modelo de pregunta (Encapsulamiento)
-│   └── Round.cs                # Modelos de ronda y resultado
-├── Repositories/
-│   ├── IUserRepository.cs      # Interfaz (Abstracción)
-│   ├── UserRepository.cs       # Repositorio de usuarios
-│   ├── QuestionRepository.cs   # Repositorio de preguntas
-│   └── RoundRepository.cs      # Repositorio de rondas
-├── Services/
-│   ├── IGameService.cs         # Interfaz del servicio
-│   └── GameService.cs          # Servicio principal del juego
-
-├── Factories/
-│   └── ServiceFactory.cs       # Factory de servicios
+- Carpeta Database: [`Database/CodeQuest.sql`](Database/CodeQuest.sql)
+- Carpeta Models: [`Models/Administrator.cs`](Models/Administrator.cs), [`Models/Question.cs`](Models/Question.cs), [`Models/User.cs`](Models/User.cs), [`Models/Round.cs`](Models/Round.cs)
+- Carpeta Repositories: [`Repositories/IQuestionRepository.cs`](Repositories/IQuestionRepository.cs), [`Repositories/QuestionRepository.cs`](Repositories/QuestionRepository.cs), [`Repositories/IAdministratorRepository.cs`](Repositories/IAdministratorRepository.cs), [`Repositories/AdministratorRepository.cs`](Repositories/AdministratorRepository.cs)
+- Carpeta Services: [`Services/IGameService.cs`](Services/IGameService.cs), [`Services/GameService.cs`](Services/GameService.cs), [`Services/IAdministratorService.cs`](Services/IAdministratorService.cs), [`Services/AdministratorService.cs`](Services/AdministratorService.cs)
+- Carpeta Factories: [`Factories/ServiceFactory.cs`](Factories/ServiceFactory.cs)
+- Formas de UI: FormLogin.cs, FormStart.cs, FormQuestionManagement.cs, FormQuestions.cs, FormFinalResults.cs, FormRanking.cs, FormInformation.cs, FormAdminManagement.cs, FormAdminLocker.cs, FormManageOptions.cs, FormQuestionManagement.cs
+- Archivo de entrada: [`Program.cs`](Program.cs)
+- Solucion: [`ProyectoFinalHerramientasII.sln`](ProyectoFinalHerramientasII.sln)
 
 
-├── Forms/
-│   ├── FormInicio.cs           # Formulario de inicio
-│   ├── FormInformativo.cs      # Información del juego (solo al inicio)
-│   ├── FormPreguntas.cs        # Formulario de preguntas (flujo continuo)
-│   ├── FormResultadosFinales.cs # Formulario de resultados finales
-│   └── FormRanking.cs          # Formulario de ranking con CRUD
-├── Program.cs                  # Punto de entrada con pruebas
-└── CodeQuest.csproj           # Archivo de proyecto
-```
+Imágenes inline
+Pantalla de inicio de sesión: ![Pantalla de inicio de sesión](Screenshots/login.png) [`Screenshots/login.png`](Screenshots/login.png)
+Gestor de administradores: ![Gestor de administradores](Screenshots/gestoradmin.png) [`Screenshots/gestoradmin.png`](Screenshots/gestoradmin.png)
+Gestión de preguntas: ![Gestión de preguntas](Screenshots/gestorpreguntas.png) [`Screenshots/gestorpreguntas.png`](Screenshots/gestorpreguntas.png)
+Juego en curso: ![Juego en curso](Screenshots/iniciaropcion1.png) [`Screenshots/iniciaropcion1.png`](Screenshots/iniciaropcion1.png)
+Resultados finales: ![Resultados finales](Screenshots/resultados.png) [`Screenshots/resultados.png`](Screenshots/resultados.png)
+Ronda: ![Ronda](Screenshots/ronda.png) [`Screenshots/ronda.png`](Screenshots/ronda.png)
+Esquema de base de datos: ![Esquema DB](Screenshots/scriptDB.png) [`Screenshots/scriptDB.png`](Screenshots/scriptDB.png)
+Carga de script: ![Carga de script](Screenshots/cargascript.png) [`Screenshots/cargascript.png`](Screenshots/cargascript.png)
+Información: ![Información](Screenshots/informacion.png) [`Screenshots/informacion.png`](Screenshots/informacion.png)
+Ranking de usuarios: ![Ranking de usuarios](Screenshots/rankingusuario.png) [`Screenshots/rankingusuario.png`](Screenshots/rankingusuario.png)
+Inicio: ![Inicio](Screenshots/inicio.png) [`Screenshots/inicio.png`](Screenshots/inicio.png)
+Panel Admin: ![Panel Admin](Screenshots/paneladmin.png) [`Screenshots/paneladmin.png`](Screenshots/paneladmin.png)
+Contribucion
 
-### 🎯 Patrón Singleton Implementado
-- **Clase**: `DbConnection`
-- **Ubicación**: `Database/DbConnection.cs`
-- **Características**:
-  - ✅ Thread-safe (doble verificación con lock)
-  - ✅ Única instancia de conexión
-  - ✅ Lazy initialization
-  - ✅ Métodos de prueba y validación
-  - ✅ Usado por todos los repositorios
+- Contribuciones son bienvenidas. Por favor abra un issue y/o haga un pull request.
 
-### 🗄️ Patrón Repository Implementado
-- **Repositorios**: `UserRepository`, `QuestionRepository`, `RoundRepository`
-- **Ubicación**: `Repositories/`
-- **Características**:
-  - ✅ 3 repositorios por entidad (User, Question, Round)
-  - ✅ Métodos CRUD completos (Create, Read, Update, Delete)
-  - ✅ Interfaces para abstracción (IUserRepository, etc.)
-  - ✅ Sin consultas SQL en la interfaz (Forms)
-  - ✅ Validaciones y manejo de errores con try-catch
-  - ✅ Comentarios XML completos
-  - ✅ Usa el Singleton DbConnection
+Licencia
 
-### 🛠️ Funcionalidades CRUD Administrativas
-- **Pantalla de Ranking** con operaciones CRUD completas:
-  - ✅ **Editar Nombre**: Cambiar nombre de usuario (UPDATE)
-  - ✅ **Resetear XP**: Poner XP en 0 (UPDATE)
-  - ✅ **Eliminar Usuario**: Borrar usuario y todos sus datos (DELETE)
-  - ✅ **Refrescar**: Actualizar datos del ranking (READ)
-- **Procedimientos Almacenados**:
-  - `spUser_UpdateUsername` - Actualizar nombre con validaciones
-  - `spUser_DeleteComplete` - Eliminación completa con transacciones
-  - `spUser_ResetXP` - Reset de XP con validaciones
+- MIT
 
-## Características Técnicas
+Agradecimientos
 
-### Patrones de Diseño Implementados
-- **Patrón Singleton**: `DbConnection` - Única instancia de conexión a BD (thread-safe)
-- **Patrón Factory**: `ServiceFactory` - Creación centralizada de servicios
-- **Patrón Repository**: 3 repositorios con CRUD completo (User, Question, Round)
-- **4 Pilares de POO**: Abstracción, Encapsulamiento, Herencia, Polimorfismo
-
-### Otras Características
-- **Validación de entrada**: Previene caracteres inválidos y entradas vacías
-- **Manejo de errores**: Try-catch en operaciones de base de datos
-- **Comentarios XML**: Documentación completa de métodos y clases
-- **Interfaz intuitiva**: Diseño limpio con colores y fuentes apropiadas
-- **Navegación fluida**: Transiciones suaves entre formularios
-- **Persistencia de datos**: Almacenamiento completo en base de datos
-
-¡Disfruta jugando CodeQuest y mejora tus conocimientos de programación en C#!
+- Al equipo de desarrollo.
