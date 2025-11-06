@@ -17,6 +17,36 @@ namespace CodeQuest.Services
         /// <returns>Lista de usuarios</returns>
         List<User> GetAllUsers();
 
+        // Question management (admin)
+        /// <summary>
+        /// Obtiene todas las preguntas
+        /// </summary>
+        List<Question> GetAllQuestions();
+
+        /// <summary>
+        /// Obtiene una pregunta por su ID
+        /// </summary>
+        Question GetQuestionById(int questionId);
+
+        /// <summary>
+        /// Crea una nueva pregunta
+        /// </summary>
+        int CreateQuestion(Question question);
+
+        /// <summary>
+        /// Crea una nueva opción para una pregunta
+        /// </summary>
+        int CreateChoice(int questionId, Choice choice);
+
+        /// <summary>
+        /// Actualiza una pregunta existente
+        /// </summary>
+        bool UpdateQuestion(Question question);
+
+        /// <summary>
+        /// Elimina una pregunta y sus opciones
+        /// </summary>
+        bool DeleteQuestion(int questionId);
         // Game operations
         int StartNewRound(int userId);
         List<Question> GetQuestionsForRound(int difficulty);
@@ -49,5 +79,27 @@ namespace CodeQuest.Services
         /// <param name="userId">ID del usuario</param>
         /// <returns>True si se reseteó correctamente</returns>
         bool ResetUserXP(int userId);
+
+        /// <summary>
+        /// Obtiene las opciones de una pregunta específica
+        /// </summary>
+        /// <param name="questionId">ID de la pregunta</param>
+        /// <returns>Lista de opciones</returns>
+        List<Choice> GetChoicesForQuestion(int questionId);
+
+        /// <summary>
+        /// Actualiza una opción existente
+        /// </summary>
+        /// <param name="choiceId">ID de la opción</param>
+        /// <param name="choice">Opción con datos actualizados</param>
+        /// <returns>True si se actualizó correctamente</returns>
+        bool UpdateChoice(int choiceId, Choice choice);
+
+        /// <summary>
+        /// Elimina una opción
+        /// </summary>
+        /// <param name="choiceId">ID de la opción a eliminar</param>
+        /// <returns>True si se eliminó correctamente</returns>
+        bool DeleteChoice(int choiceId);
     }
 }

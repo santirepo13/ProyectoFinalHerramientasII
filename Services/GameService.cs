@@ -56,6 +56,37 @@ namespace CodeQuest.Services
             return questionRepository.GetQuestionsByDifficulty(difficulty, 3);
         }
 
+        // Question management (admin)
+        public List<Question> GetAllQuestions()
+        {
+            return questionRepository.GetAllQuestions();
+        }
+
+        public Question GetQuestionById(int questionId)
+        {
+            return questionRepository.GetQuestionById(questionId);
+        }
+
+        public int CreateQuestion(Question question)
+        {
+            return questionRepository.CreateQuestion(question);
+        }
+
+        public int CreateChoice(int questionId, Choice choice)
+        {
+            return questionRepository.CreateChoice(questionId, choice);
+        }
+
+        public bool UpdateQuestion(Question question)
+        {
+            return questionRepository.UpdateQuestion(question);
+        }
+
+        public bool DeleteQuestion(int questionId)
+        {
+            return questionRepository.DeleteQuestion(questionId);
+        }
+
         public void SubmitAnswer(int roundId, int questionId, int choiceId, int timeSpentSec)
         {
             roundRepository.SubmitAnswer(roundId, questionId, choiceId, timeSpentSec);
@@ -96,7 +127,7 @@ namespace CodeQuest.Services
         {
             return userRepository.UpdateUsername(userId, newUsername);
         }
-
+ 
         /// <summary>
         /// Elimina completamente un usuario del ranking
         /// </summary>
@@ -106,7 +137,7 @@ namespace CodeQuest.Services
         {
             return userRepository.DeleteUserComplete(userId);
         }
-
+ 
         /// <summary>
         /// Resetea el XP de un usuario
         /// </summary>
@@ -115,6 +146,37 @@ namespace CodeQuest.Services
         public bool ResetUserXP(int userId)
         {
             return userRepository.ResetUserXP(userId);
+        }
+
+        /// <summary>
+        /// Obtiene las opciones de una pregunta específica
+        /// </summary>
+        /// <param name="questionId">ID de la pregunta</param>
+        /// <returns>Lista de opciones</returns>
+        public List<Choice> GetChoicesForQuestion(int questionId)
+        {
+            return questionRepository.GetChoicesForQuestion(questionId);
+        }
+
+        /// <summary>
+        /// Actualiza una opción existente
+        /// </summary>
+        /// <param name="choiceId">ID de la opción</param>
+        /// <param name="choice">Opción con datos actualizados</param>
+        /// <returns>True si se actualizó correctamente</returns>
+        public bool UpdateChoice(int choiceId, Choice choice)
+        {
+            return questionRepository.UpdateChoice(choiceId, choice);
+        }
+
+        /// <summary>
+        /// Elimina una opción
+        /// </summary>
+        /// <param name="choiceId">ID de la opción a eliminar</param>
+        /// <returns>True si se eliminó correctamente</returns>
+        public bool DeleteChoice(int choiceId)
+        {
+            return questionRepository.DeleteChoice(choiceId);
         }
     }
 }

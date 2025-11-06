@@ -22,6 +22,7 @@ namespace CodeQuest
         private Button btnLogout;
         private Button btnBackToStart;
         private Button btnManageAdmins;
+        private Button btnManageQuestions;
         
         private readonly IGameService gameService;
         private readonly IAdministratorService administratorService;
@@ -163,6 +164,18 @@ namespace CodeQuest
             btnManageAdmins.FlatStyle = FlatStyle.Flat;
             btnManageAdmins.Click += BtnManageAdmins_Click;
             this.Controls.Add(btnManageAdmins);
+
+            // Questions management button
+            btnManageQuestions = new Button();
+            btnManageQuestions.Text = "Preguntas";
+            btnManageQuestions.Font = new Font("Arial", 12, FontStyle.Bold);
+            btnManageQuestions.Size = new Size(150, 40);
+            btnManageQuestions.Location = new Point(440, 720);
+            btnManageQuestions.BackColor = Color.FromArgb(70, 130, 180);
+            btnManageQuestions.ForeColor = Color.White;
+            btnManageQuestions.FlatStyle = FlatStyle.Flat;
+            btnManageQuestions.Click += BtnManageQuestions_Click;
+            this.Controls.Add(btnManageQuestions);
 
             this.ResumeLayout(false);
         }
@@ -353,6 +366,20 @@ namespace CodeQuest
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al abrir gestión de administradores: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnManageQuestions_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var form = new FormQuestionManagement();
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al abrir gestión de preguntas: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

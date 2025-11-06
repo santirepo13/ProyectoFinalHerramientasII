@@ -257,6 +257,68 @@ namespace CodeQuest.Repositories
         }
 
         /// <summary>
+        /// Actualiza una opción existente
+        /// </summary>
+        /// <param name="choiceId">ID de la opción</param>
+        /// <param name="choice">Opción con datos actualizados</param>
+        /// <returns>True si se actualizó correctamente</returns>
+        public bool UpdateChoice(int choiceId, Choice choice)
+        {
+            try
+            {
+                if (choice == null)
+                    throw new ArgumentNullException(nameof(choice));
+
+                using (var connection = DbConnection.GetConnection())
+                {
+                    connection.Open();
+                    using (var command = new SqlCommand("spOption_Update", connection))
+                    {
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@ChoiceID", choiceId);
+                        command.Parameters.AddWithValue("@ChoiceText", choice.ChoiceText);
+                        command.Parameters.AddWithValue("@IsCorrect", choice.IsCorrect);
+
+                        var result = command.ExecuteScalar();
+                        return Convert.ToInt32(result) == 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Error al actualizar opción: {ex.Message}", ex);
+            }
+        }
+
+        /// <summary>
+        /// Elimina una opción por su ID
+        /// </summary>
+        /// <param name="choiceId">ID de la opción a eliminar</param>
+        /// <returns>True si se eliminó correctamente</returns>
+        public bool DeleteChoice(int choiceId)
+        {
+            try
+            {
+                using (var connection = DbConnection.GetConnection())
+                {
+                    connection.Open();
+                    using (var command = new SqlCommand("spOption_Delete", connection))
+                    {
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@ChoiceID", choiceId);
+
+                        var result = command.ExecuteScalar();
+                        return result != null && Convert.ToInt32(result) == 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Error al eliminar opción: {ex.Message}", ex);
+            }
+        }
+
+        /// <summary>
         /// Actualiza una pregunta existente
         /// </summary>
         /// <param name="question">Pregunta con datos actualizados</param>

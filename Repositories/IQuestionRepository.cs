@@ -53,6 +53,21 @@ namespace CodeQuest.Repositories
         /// <param name="choice">Opción a crear</param>
         /// <returns>ID de la opción creada</returns>
         int CreateChoice(int questionId, Choice choice);
+        // UPDATE operations for choices
+        /// <summary>
+        /// Actualiza una opción existente
+        /// </summary>
+        /// <param name="choiceId">ID de la opción</param>
+        /// <param name="choice">Opción con datos actualizados</param>
+        /// <returns>True si se actualizó correctamente</returns>
+        bool UpdateChoice(int choiceId, Choice choice);
+
+        /// <summary>
+        /// Elimina una opción
+        /// </summary>
+        /// <param name="choiceId">ID de la opción a eliminar</param>
+        /// <returns>True si se eliminó correctamente</returns>
+        bool DeleteChoice(int choiceId);
 
         // UPDATE operations
         /// <summary>

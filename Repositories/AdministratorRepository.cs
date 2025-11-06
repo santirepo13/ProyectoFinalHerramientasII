@@ -71,12 +71,12 @@ namespace CodeQuest.Repositories
             }
             catch (ArgumentException)
             {
-                // Re-lanza las excepciones de validación
+                
                 throw;
             }
             catch (SqlException sqlEx)
             {
-                // Manejo específico de errores de SQL Server
+                
                 if (sqlEx.Number == 2627) // Violación de clave única
                     throw new InvalidOperationException($"El nombre de usuario '{username}' ya existe", sqlEx);
                 
@@ -319,9 +319,10 @@ namespace CodeQuest.Repositories
                 using (var connection = DbConnection.GetConnection())
                 {
                     connection.Open();
-                    using (var command = new SqlCommand("DELETE FROM Administrators WHERE AdminID = @adminId", connection))
+                    using (var command = new SqlCommand("spAdministrator_Delete", connection))
                     {
-                        command.Parameters.AddWithValue("@adminId", adminId);
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@AdminID", adminId);
                         
                         int rowsAffected = command.ExecuteNonQuery();
                         return rowsAffected > 0;
@@ -351,8 +352,9 @@ namespace CodeQuest.Repositories
                 using (var connection = DbConnection.GetConnection())
                 {
                     connection.Open();
-                    using (var command = new SqlCommand("SELECT AdminID, Username, Password, CreatedAt FROM Administrators ORDER BY CreatedAt DESC", connection))
+                    using (var command = new SqlCommand("spAdministrator_GetAll", connection))
                     {
+                        command.CommandType = CommandType.StoredProcedure;
                         using (var reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -361,7 +363,6 @@ namespace CodeQuest.Repositories
                                 {
                                     AdminID = Convert.ToInt32(reader["AdminID"]),
                                     Username = reader.GetString("Username"),
-                                    Password = reader.GetString("Password"),
                                     CreatedAt = reader.GetDateTime("CreatedAt")
                                 });
                             }
