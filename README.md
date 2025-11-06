@@ -71,24 +71,57 @@ Estructura del proyecto
 - Solucion: [`ProyectoFinalHerramientasII.sln`](ProyectoFinalHerramientasII.sln)
 
 
-Capturas de pantalla (vista resumida)
+Guía paso a paso (tour visual)
 
-A continuación las capturas principales presentadas en una cuadrícula para mejorar la legibilidad. Haz clic en el enlace bajo cada imagen para abrir el archivo en la carpeta Screenshots.
+1. Inicio — Pantalla principal
+   Una vista rápida del inicio de la aplicación y navegación principal.
+   <img src="Screenshots/inicio.png" width="600"/><br/>
+   [`Screenshots/inicio.png`](Screenshots/inicio.png:1)
 
-| Inicio | Login | Panel Admin |
-| --- | --- | --- |
-| <img src="Screenshots/inicio.png" width="300"/><br/>[`Screenshots/inicio.png`](Screenshots/inicio.png) | <img src="Screenshots/login.png" width="300"/><br/>[`Screenshots/login.png`](Screenshots/login.png) | <img src="Screenshots/paneladmin.png" width="300"/><br/>[`Screenshots/paneladmin.png`](Screenshots/paneladmin.png) |
+2. Inicio de sesión — Acceso de usuarios y administradores
+   Verifica credenciales y accede a las opciones según el rol.
+   <img src="Screenshots/login.png" width="600"/><br/>
+   [`Screenshots/login.png`](Screenshots/login.png:1)
 
-| Gestor Admin | Gestor Opciones | Gestión de Preguntas |
-| --- | --- | --- |
-| <img src="Screenshots/gestoradmin.png" width="300"/><br/>[`Screenshots/gestoradmin.png`](Screenshots/gestoradmin.png) | <img src="Screenshots/gestoropciones.png" width="300"/><br/>[`Screenshots/gestoropciones.png`](Screenshots/gestoropciones.png) | <img src="Screenshots/gestorpreguntas.png" width="300"/><br/>[`Screenshots/gestorpreguntas.png`](Screenshots/gestorpreguntas.png) |
+3. Panel de administración — Control central
+   Desde aquí se gestiona el acceso a módulos de administración.
+   <img src="Screenshots/paneladmin.png" width="600"/><br/>
+   [`Screenshots/paneladmin.png`](Screenshots/paneladmin.png:1)
 
-| Juego (opción 1) | Juego (opción 2) | Ronda / Resultados |
-| --- | --- | --- |
-| <img src="Screenshots/iniciaropcion1.png" width="300"/><br/>[`Screenshots/iniciaropcion1.png`](Screenshots/iniciaropcion1.png) | <img src="Screenshots/iniciaropcion2.png" width="300"/><br/>[`Screenshots/iniciaropcion2.png`](Screenshots/iniciaropcion2.png) | <img src="Screenshots/ronda.png" width="300"/><br/>[`Screenshots/ronda.png`](Screenshots/ronda.png) <br/> <img src="Screenshots/resultados.png" width="300"/><br/>[`Screenshots/resultados.png`](Screenshots/resultados.png) |
+4. Gestión de administradores y opciones
+   Crear/editar administradores y configurar opciones del sistema.
+   <img src="Screenshots/gestoradmin.png" width="600"/><br/>
+   [`Screenshots/gestoradmin.png`](Screenshots/gestoradmin.png:1)
 
-| Base de datos | Carga de script | Ranking / Información |
-| --- | --- | --- |
-| <img src="Screenshots/scriptDB.png" width="300"/><br/>[`Screenshots/scriptDB.png`](Screenshots/scriptDB.png) | <img src="Screenshots/cargascript.png" width="300"/><br/>[`Screenshots/cargascript.png`](Screenshots/cargascript.png) | <img src="Screenshots/rankingusuario.png" width="300"/><br/>[`Screenshots/rankingusuario.png`](Screenshots/rankingusuario.png) <br/> <img src="Screenshots/informacion.png" width="300"/><br/>[`Screenshots/informacion.png`](Screenshots/informacion.png) |
+5. Gestión de preguntas
+   Añade, edita y organiza preguntas y categorías.
+   <img src="Screenshots/gestorpreguntas.png" width="600"/><br/>
+   [`Screenshots/gestorpreguntas.png`](Screenshots/gestorpreguntas.png:1)
+
+6. Juego — Inicio y desarrollo de una ronda
+   Muestra del flujo de juego (opciones de inicio y pantalla de ronda).
+   <img src="Screenshots/iniciaropcion1.png" width="600"/><br/>
+   [`Screenshots/iniciaropcion1.png`](Screenshots/iniciaropcion1.png:1)
+
+7. Resultados finales y pantalla de ronda
+   Resumen de puntajes y detalles de la ronda finalizada.
+   <img src="Screenshots/resultados.png" width="600"/><br/>
+   [`Screenshots/resultados.png`](Screenshots/resultados.png:1)
+
+8. Base de datos y carga de scripts
+   Visual del esquema y la herramienta de carga de scripts.
+   <img src="Screenshots/scriptDB.png" width="600"/><br/>
+   [`Screenshots/scriptDB.png`](Screenshots/scriptDB.png:1)
+   <img src="Screenshots/cargascript.png" width="600"/><br/>
+   [`Screenshots/cargascript.png`](Screenshots/cargascript.png:1)
+
+9. Información y Ranking
+   Páginas informativas y listado de ranking de usuarios.
+   <img src="Screenshots/informacion.png" width="600"/><br/>
+   [`Screenshots/informacion.png`](Screenshots/informacion.png:1)
+   <img src="Screenshots/rankingusuario.png" width="600"/><br/>
+   [`Screenshots/rankingusuario.png`](Screenshots/rankingusuario.png:1)
+
+(Nota: las imágenes se muestran como miniaturas grandes en el README; haz clic en el enlace de cada paso para abrir el archivo original en la carpeta [`Screenshots`](Screenshots:1).)
 Contribucion
 
